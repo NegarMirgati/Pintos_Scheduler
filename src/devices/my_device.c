@@ -2,12 +2,19 @@
 
 struct my_device io_devices[NUM_OF_DEVICES];
 
+
 void my_device_init(int device_num){
+
+	/// 0 or 1 or 2
+
+	if(device_num < NUM_OF_DEVICES){
 
 	lock_init(&(io_devices[device_num].device_lock));
 	lock_init(&(io_devices[device_num].time_lock));
 
 	io_devices[i].total_time = 0;
+}
+
 }
 
 int64_t get_total_time(int device_num){

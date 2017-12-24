@@ -4,7 +4,7 @@
 #include <threads/synch.h>       /**Lock**/
 
 
-#define num_of_devices 3
+#define NUM_OF_DEVICES 3
 
 
 struct my_device{
