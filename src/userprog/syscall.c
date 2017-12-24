@@ -4,7 +4,9 @@
 #include "threads/interrupt.h"
 #include "threads/thread.h"
 
+
 static void syscall_handler (struct intr_frame *);
+void check_valid_ptr (const void *vaddr);
 
 void
 syscall_init (void) 
@@ -15,6 +17,26 @@ syscall_init (void)
 static void
 syscall_handler (struct intr_frame *f UNUSED) 
 {
-  printf ("system call!\n");
+  
+  int arg[MAX_ARGS];
+  check_valid_ptr((const void*) f->esp);
+
   thread_exit ();
+}
+
+
+void check_valid_ptr (const void *vaddr)
+{
+  if (!is_user_vaddr(vaddr) || vaddr < USER_VADDR_BOTTOM){
+
+      exit(ERROR);
+    }
+
+    switch (* (int *) f->esp){
+
+    	case SYS_IO : {
+
+    		/**************** Implement system call ******************/
+    	}
+    }
 }
