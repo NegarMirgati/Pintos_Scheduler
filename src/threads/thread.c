@@ -533,24 +533,36 @@ next_thread_to_run (void)
 {
   if (list_empty (&ready_list))
     return idle_thread;
+
+
   else
   {
     //MRM2 find the thread with the highest priority
-    struct thread *max = 0;
+    //struct thread *max = 0;
     struct list_elem *e;
-    
-    enum intr_level old_level = intr_disable ();
 
-    for (e = list_begin (&ready_list); e != list_end (&ready_list);
-       e = list_next (e))
-    {
+    /* my code begins*/
+    struct list_elem * next_elem_to_run = list_begin(&ready_list);
+    /* my code ends*/
+
+    
+    //enum intr_level old_level = intr_disable ();
+
+    for (e = list_begin (&ready_list); e != list_end (&ready_list); e = list_next (e) ){
+
       struct thread *t = list_entry (e, struct thread, elem);
-      if(max == 0)
-        max = t;
-      else if(t->donation_priority > max->donation_priority)
-        max = t;
-      //Round robin scheduling should be maintained since the list is being
-      //examined in order
+
+      if(list_empty(&(t->thread_devices))){ /// If this ready thread has not requested any I/O device yet
+
+        continue;
+
+      }
+
+      else{
+
+        /***** IMPLEMENT ****/
+      }
+
     }
 
     list_remove (&max->elem);
