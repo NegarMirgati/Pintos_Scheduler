@@ -6,6 +6,8 @@ void my_device_init(int device_num){
 
 	lock_init(&(io_devices[device_num]));
 	lock_init(&(io_devices[device_num]));
+	
+	io_devices[i].total_time = 0;
 }
 
 int64_t get_total_time(int device_num){
