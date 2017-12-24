@@ -6,7 +6,7 @@ void my_device_init(int device_num){
 
 	lock_init(&(io_devices[device_num]));
 	lock_init(&(io_devices[device_num]));
-	
+
 	io_devices[i].total_time = 0;
 }
 
@@ -58,4 +58,10 @@ void sub_total_time(int device_num, int64_t time){
 	io_devices[device_num].total_time -= time;
 
 	lock_release(&(io_devices[device_num].time_lock));
+}
+
+
+void add_to_waiting_list(int device_num, tid_t id){
+
+	list_push_back (/*struct list */ io_devices[device_num].waiting_list, /*struct list_elem **/ );
 }

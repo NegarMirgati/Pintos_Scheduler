@@ -14,6 +14,8 @@ struct my_device{
   int64_t total_time;
 
   struct lock time_lock;
+
+  struct list waiting_list;
 	
 
 };
@@ -30,5 +32,7 @@ void use_device(int id);
 void add_total_time(int device_num, int64_t time);
 
 void sub_total_time(int device_num, int64_t time);
+
+void add_to_waiting_list(int device_num, /*tid_t id*/ );
 	
 	
