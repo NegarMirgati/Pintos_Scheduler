@@ -2,6 +2,7 @@
 #define THREADS_THREAD_H
 
 #include <debug.h>
+#include "devices/my_device.h"
 #include <list.h>
 #include <stdint.h>
 #include "synch.h"

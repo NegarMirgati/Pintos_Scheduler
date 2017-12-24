@@ -23,6 +23,12 @@ void my_device_init(int device_num);
 
 int64_t get_total_time(int device_num);
 
-void use_device(int id, int64_t use_time);
+void request_device(int device_num, int64_t use_time);
+
+void use_device(int id);
+
+void add_total_time(int device_num, int64_t time);
+
+void sub_total_time(int device_num, int64_t time);
 	
 	
