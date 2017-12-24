@@ -8,6 +8,18 @@
 #include "synch.h"
 
 
+
+
+/* My Code Begins */
+struct thread_device{
+
+  int device_id;
+  struct list_elem elem;
+};
+
+/* My code Ends */
+
+
 /* States in a thread's life cycle. */
 enum thread_status
   {
@@ -84,8 +96,8 @@ typedef int tid_t;
    only because they are mutually exclusive: only a thread in the
    ready state is on the run queue, whereas only a thread in the
    blocked state is on a semaphore wait list. */
-struct thread
-  {
+struct thread{
+
     /* Owned by thread.c. */
     tid_t tid;                          /* Thread identifier. */
     enum thread_status status;          /* Thread state. */
@@ -112,6 +124,10 @@ struct thread
 
     /* Owned by thread.c. */
     unsigned magic;                     /* Detects stack overflow. */
+
+  /* My code Begins */
+  struct list thread_devices;
+  /* My code ends */
   };
 
 /* If false (default), use round-robin scheduler.
