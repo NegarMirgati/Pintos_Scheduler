@@ -503,6 +503,11 @@ init_thread (struct thread *t, const char *name, int priority)
   {
     t->donor_list[i] = 0;
   }
+
+  /* My code begins */
+  list_init(&(t->thread_devices));
+
+  /* My code ends */
 }
 
 /* Allocates a SIZE-byte frame at the top of thread T's stack and
