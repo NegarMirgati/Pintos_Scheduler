@@ -78,3 +78,22 @@ void add_to_waiting_list(int device_num, tid_t id){
 
 	list_push_back (&(io_devices[device_num].waiting_list), &(w->list_elem));
 }
+
+bool has_tid_in_waiting_list(int device_num, tid_t tid){
+
+	struct list_elem* e;
+
+
+	for( e = list_begin(&(io_devices[device_num].waiting_list));
+		 e !=list_end(&(io_devices[device_num].waiting_list)); e = list_next(e) ){
+
+		struct waiter* w = list_entry(e, struct waiter, elem);
+
+
+	   if(w-> tid == tid)
+	   		return true; 	
+
+	}
+
+	return false;
+}
