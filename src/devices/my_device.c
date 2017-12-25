@@ -72,5 +72,9 @@ void sub_total_time(int device_num, int64_t time){
 
 void add_to_waiting_list(int device_num, tid_t id){
 
-	list_push_back (/*struct list */ io_devices[device_num].waiting_list, /*struct list_elem **/ );
+	struct waiter* w = new struct waiter();
+	w->tid = id;
+
+
+	list_push_back (&(io_devices[device_num].waiting_list), &(w->list_elem));
 }
