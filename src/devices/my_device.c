@@ -12,6 +12,8 @@ void my_device_init(int device_num){
 	lock_init(&(io_devices[device_num].device_lock));
 	lock_init(&(io_devices[device_num].time_lock));
 
+	list_init(&(waiting_list));
+
 	io_devices[i].total_time = 0;
 }
 
