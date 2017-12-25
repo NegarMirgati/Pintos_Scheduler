@@ -182,3 +182,12 @@ inumber (int fd)
 {
   return syscall1 (SYS_INUMBER, fd);
 }
+
+/*My code begins */
+
+void inform_io(int device_num){
+
+  syscall1(SYS_IO, device_num);
+}
+
+/* My code ends */

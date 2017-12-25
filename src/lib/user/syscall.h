@@ -45,4 +45,11 @@ bool readdir (int fd, char name[READDIR_MAX_LEN + 1]);
 bool isdir (int fd);
 int inumber (int fd);
 
+
+/* my code begins */
+
+void inform_io(int device_num);
+
+/* my code ends */
+
 #endif /* lib/user/syscall.h */
