@@ -30,5 +30,9 @@ mkdir_SRC = mkdir.c
 pwd_SRC = pwd.c
 shell_SRC = shell.c
 
+# Should work in my project
+
+syscall_test_SRC = syscall_test.c
+
 include $(SRCDIR)/Make.config
 include $(SRCDIR)/Makefile.userprog
