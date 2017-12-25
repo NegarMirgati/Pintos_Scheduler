@@ -7,6 +7,13 @@
 #define NUM_OF_DEVICES 3
 
 
+struct waiter{
+
+	tid_t tid;
+	struct list_elem elem;
+}
+
+
 struct my_device{
 
   struct lock device_lock;
