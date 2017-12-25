@@ -49,7 +49,7 @@ void request_device(int device_num, int64_t time, tid_t tid){
 void use_device(int id, int64_t use_time){
 
 
-	/**** IMPLEMENT THIS FUNCTION ****/
+	timer_sleep(use_time);	
 }
 
 

@@ -611,8 +611,8 @@ next_thread_to_run (void)
     }
 
    // list_remove (&max->elem);
-    intr_set_level (old_level);
-    return max;
+  intr_set_level (old_level);
+   // return max;
   }
   //  return list_entry (list_pop_front (&ready_list), struct thread, elem);
 }

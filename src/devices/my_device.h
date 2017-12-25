@@ -2,6 +2,7 @@
 #define MYDEVICE_H_
 
 #include <threads/synch.h>       /**Lock**/
+#inlcude "timer.h"
 
 
 #define NUM_OF_DEVICES 3
@@ -34,7 +35,7 @@ int64_t get_total_time(int device_num);
 
 void request_device(int device_num, int64_t use_time);
 
-void use_device(int id);
+void use_device(int id, int64_t use_time=====);
 
 void add_total_time(int device_num, int64_t time);
 
