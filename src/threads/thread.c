@@ -560,12 +560,57 @@ next_thread_to_run (void)
 
       else{
 
-        /***** IMPLEMENT ****/
+        int64_t max_queue_time = LONG_MIN;
+
+        int selected_device = -1;
+
+        for( int i = 0; i < NUM_OF_DEVICES ; i++){
+
+          int64_t retval = get_total_time(int i);
+
+          if(retval > max_queue_time && retval != 0){
+
+            selected_device = i;
+            max_queue_time = retval;
+
+
+          }
+
+        }
+
+
+        if(selected_device == -1){
+
+          struct list_elem *first_elem = list_begin(&ready_list);
+
+          struct thread *first = list_entry(first_elem , struct thread, elem);
+
+          list_remove(first_elem);
+
+          return first;
+
+        }
+
+        else{
+
+            for(e = list_begin(&ready_list); e != list_end(&ready_list); e = list_next(e)){
+
+              struct thread *t = list_entry (e, struct thread, elem);
+
+              if(has_tid_in_waiting_list(selected_device, t->tid)){
+
+                list_remove(&t->elm);
+
+                return t;
+              }
+
+           }
+        }
       }
 
     }
 
-    list_remove (&max->elem);
+   // list_remove (&max->elem);
     intr_set_level (old_level);
     return max;
   }

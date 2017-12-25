@@ -5,6 +5,7 @@
 #include "devices/my_device.h"
 #include <list.h>
 #include <stdint.h>
+#include <limits.h>
 #include "synch.h"
 
 
