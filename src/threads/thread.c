@@ -505,7 +505,7 @@ init_thread (struct thread *t, const char *name, int priority)
   }
 
   /* My code begins */
-  list_init(&(t->thread_devices));
+  //list_init(&(t->thread_devices));
 
   /* My code ends */
 }
@@ -529,8 +529,8 @@ alloc_frame (struct thread *t, size_t size)
    will be in the run queue.)  If the run queue is empty, return
    idle_thread. */
 static struct thread *
-next_thread_to_run (void) 
-{
+next_thread_to_run (void){
+
   if (list_empty (&ready_list))
     return idle_thread;
 
@@ -549,17 +549,17 @@ next_thread_to_run (void)
     
     //enum intr_level old_level = intr_disable ();
 
-    for (e = list_begin (&ready_list); e != list_end (&ready_list); e = list_next (e) ){
+    //for (e = list_begin (&ready_list); e != list_end (&ready_list); e = list_next (e) ){
 
-      struct thread *t = list_entry (e, struct thread, elem);
+      //struct thread *t = list_entry (e, struct thread, elem);
 
-      if(list_empty(&(t->thread_devices))){ /// If this ready thread has not requested any I/O device yet
+      //if(list_empty(&(t->thread_devices))){ /// If this ready thread has not requested any I/O device yet
 
-        continue;
+       // continue;
 
-      }
+     // }
 
-      else{
+      //else{
 
         int64_t max_queue_time = LONG_MIN;
 
@@ -612,16 +612,15 @@ next_thread_to_run (void)
 
            }
         }
-      }
+      //}
 
     }
-
    // list_remove (&max->elem);
   //intr_set_level (old_level);
    // return max;
   }
   //  return list_entry (list_pop_front (&ready_list), struct thread, elem);
-}
+//}
 
 /* MRM same as next_thread_to_run only it just peeks at the next thread. */
 static struct thread *

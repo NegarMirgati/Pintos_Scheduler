@@ -127,7 +127,7 @@ struct thread{
     unsigned magic;                     /* Detects stack overflow. */
 
   /* My code Begins */
-  struct list thread_devices;
+  //struct list thread_devices;
   /* My code ends */
   };
 
