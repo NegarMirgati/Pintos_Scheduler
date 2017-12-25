@@ -24,7 +24,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 
   switch (* (int *) f->esp){
 
-  	case SYS_IO:{
+  	case SYS_IO: {
 
   		
   		get_arg(f, arg, 2);
@@ -36,7 +36,7 @@ syscall_handler (struct intr_frame *f UNUSED)
 
   }
 
-  thread_exit ();
+  //thread_exit ();
 }
 
 
