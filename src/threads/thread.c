@@ -537,6 +537,8 @@ next_thread_to_run (void)
 
   else
   {
+
+    enum intr_level old_level = intr_disable ();
     //MRM2 find the thread with the highest priority
     //struct thread *max = 0;
     struct list_elem *e;
@@ -563,10 +565,11 @@ next_thread_to_run (void)
         int64_t max_queue_time = LONG_MIN;
 
         int selected_device = -1;
+        int i ;
 
-        for( int i = 0; i < NUM_OF_DEVICES ; i++){
+        for(i = 0; i < NUM_OF_DEVICES ; i++){
 
-          int64_t retval = get_total_time(int i);
+          int64_t retval = get_total_time(i);
 
           if(retval > max_queue_time && retval != 0){
 
@@ -599,7 +602,7 @@ next_thread_to_run (void)
 
               if(has_tid_in_waiting_list(selected_device, t->tid)){
 
-                list_remove(&t->elm);
+                list_remove(&t->elem);
 
                 return t;
               }

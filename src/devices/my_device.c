@@ -12,9 +12,9 @@ void my_device_init(int device_num){
 	lock_init(&(io_devices[device_num].device_lock));
 	lock_init(&(io_devices[device_num].time_lock));
 
-	list_init(&(waiting_list));
+	list_init(&(io_devices[device_num].waiting_list));
 
-	io_devices[i].total_time = 0;
+	io_devices[device_num].total_time = 0;
 }
 
 }
@@ -75,11 +75,11 @@ void sub_total_time(int device_num, int64_t time){
 
 void add_to_waiting_list(int device_num, tid_t id){
 
-	struct waiter* w = new struct waiter();
+	struct waiter* w = malloc(sizeof(struct waiter));
 	w->tid = id;
 
 
-	list_push_back (&(io_devices[device_num].waiting_list), &(w->list_elem));
+	list_push_back (&(io_devices[device_num].waiting_list), &(w->elem));
 }
 
 bool has_tid_in_waiting_list(int device_num, tid_t tid){
