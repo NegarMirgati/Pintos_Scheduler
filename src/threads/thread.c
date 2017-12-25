@@ -534,7 +534,6 @@ next_thread_to_run (void)
   if (list_empty (&ready_list))
     return idle_thread;
 
-
   else
   {
 
@@ -590,6 +589,8 @@ next_thread_to_run (void)
 
           list_remove(first_elem);
 
+          intr_set_level (old_level);
+
           return first;
 
         }
@@ -604,6 +605,8 @@ next_thread_to_run (void)
 
                 list_remove(&t->elem);
 
+                intr_set_level (old_level);
+
                 return t;
               }
 
@@ -614,7 +617,7 @@ next_thread_to_run (void)
     }
 
    // list_remove (&max->elem);
-  intr_set_level (old_level);
+  //intr_set_level (old_level);
    // return max;
   }
   //  return list_entry (list_pop_front (&ready_list), struct thread, elem);
@@ -709,7 +712,7 @@ static void
 schedule (void) 
 {
   struct thread *cur = running_thread ();
-  struct thread *next = next_thread_to_run ();
+  struct thread *next = next_thread_to_run();
   struct thread *prev = NULL;
 
   ASSERT (intr_get_level () == INTR_OFF);
