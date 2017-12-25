@@ -24,7 +24,7 @@ int64_t get_total_time(int device_num){
 	return io_devices[device_num].total_time;
 }
 
-void request_device(int device_num, int64_t time){
+void request_device(int device_num, int64_t time, tid_t tid){
 
 	
 	add_total_time(device_num, time);
@@ -35,6 +35,9 @@ void request_device(int device_num, int64_t time){
 	use_device(device_num, time);
 
 	lock_release(&(io_devices[device_num].device_lock));
+
+
+	remove_from_waiting_list(device_num, tid);
 
 
     sub_total_time(device_num, time);
@@ -96,4 +99,24 @@ bool has_tid_in_waiting_list(int device_num, tid_t tid){
 	}
 
 	return false;
+}
+
+
+void remove_from_waiting_list(int device_num , tid_t tid){
+
+
+	struct list_elem* e;
+
+
+	for( e = list_begin(&(io_devices[device_num].waiting_list));
+		 e !=list_end(&(io_devices[device_num].waiting_list)); e = list_next(e) ){
+
+		struct waiter* w = list_entry(e, struct waiter, elem);
+
+
+	   if(w-> tid == tid)
+	   		list_remove (e);
+
+	}
+
 }

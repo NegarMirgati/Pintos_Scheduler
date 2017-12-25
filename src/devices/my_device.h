@@ -40,7 +40,9 @@ void add_total_time(int device_num, int64_t time);
 
 void sub_total_time(int device_num, int64_t time);
 
-void add_to_waiting_list(int device_num, /*tid_t id*/ );
+void add_to_waiting_list(int device_num, tid_t id);
+
+void remove_from_waiting_list(int device_num , tid_t tid);
 
 bool has_tid_in_waiting_list(int device_num, tid_t tid);
 	
