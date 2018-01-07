@@ -190,4 +190,11 @@ void inform_io(int device_num){
   syscall1(SYS_IO, device_num);
 }
 
+
+
+void do_io(int device_num, int64_t use_time , tid_t tid){
+
+  syscall2(SYS_DO_IO, device_num, use_time);
+}
+
 /* My code ends */

@@ -3,6 +3,7 @@
 #include <syscall-nr.h>
 #include "threads/interrupt.h"
 #include "threads/thread.h"
+#include "devices/my_device.h"
 
 
 static void syscall_handler (struct intr_frame *);
@@ -33,6 +34,15 @@ syscall_handler (struct intr_frame *f UNUSED)
   		add_to_waiting_list(arg[0], arg[1]);
 
   	}
+
+    case SYS_DO_IO: {
+
+      get_arg(f, arg, 3);
+
+      request_device(arg[0], arg[1], arg[2]);
+
+
+    }
 
   }
 

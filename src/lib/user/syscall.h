@@ -49,6 +49,7 @@ int inumber (int fd);
 /* my code begins */
 
 void inform_io(int device_num);
+void do_io(int device_num, int64_t use_time, tid_t tid);
 
 /* my code ends */
 
