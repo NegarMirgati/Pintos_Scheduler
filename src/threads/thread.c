@@ -561,7 +561,7 @@ next_thread_to_run (void){
 
       //else{
 
-        int64_t max_queue_time = LONG_MIN;
+        int64_t min_queue_time = LONG_MAX;
 
         int selected_device = -1;
         int i ;
@@ -570,10 +570,10 @@ next_thread_to_run (void){
 
           int64_t retval = get_total_time(i);
 
-          if(retval > max_queue_time && retval != 0){
+          if(retval < min_queue_time && retval != 0){
 
             selected_device = i;
-            max_queue_time = retval;
+            min_queue_time = retval;
 
 
           }
