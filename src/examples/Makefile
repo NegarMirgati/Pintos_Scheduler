@@ -33,6 +33,7 @@ shell_SRC = shell.c
 # Should work in my project
 
 syscall_test_SRC = syscall_test.c
+my_device_test_SRC = my_device_test.c
 
 include $(SRCDIR)/Make.config
 include $(SRCDIR)/Makefile.userprog
