@@ -31,7 +31,8 @@ enum
     SYS_INUMBER,                 /* Returns the inode number for a fd. */
 
    /* Scheduler Project*/
-    SYS_IO
+    SYS_IO,
+    SYS_DO_IO
   };
 
 #endif /* lib/syscall-nr.h */
