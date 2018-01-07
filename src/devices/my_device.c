@@ -49,7 +49,13 @@ void request_device(int device_num, int64_t time, tid_t tid){
 void use_device(int id, int64_t use_time){
 
 
-	timer_sleep(use_time);	
+
+     printf("My device number %d is doing io for # %lld ticks. \n", id, use_time);
+
+	 timer_sleep(use_time);	
+
+	 printf("My device number %d has finished  doing io after # %lld ticks. \n", id, use_time);
+
 }
 
 

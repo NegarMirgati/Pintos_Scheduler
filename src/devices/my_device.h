@@ -6,6 +6,7 @@
 #include <list.h>
 #include <stdint.h>
 #include <limits.h>
+#include <stdio.h>
 #include <debug.h>
 #include "threads/malloc.h"
 #include "timer.h"
