@@ -6,6 +6,7 @@
 
 /* Process identifier. */
 typedef int pid_t;
+typedef int tid_t;
 #define PID_ERROR ((pid_t) -1)
 
 /* Map region identifier. */

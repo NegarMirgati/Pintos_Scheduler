@@ -194,7 +194,7 @@ void inform_io(int device_num){
 
 void do_io(int device_num, int64_t use_time , tid_t tid){
 
-  syscall3(SYS_DO_IO, device_num, use_time);
+  syscall3(SYS_DO_IO, device_num, use_time, tid);
 }
 
 /* My code ends */
