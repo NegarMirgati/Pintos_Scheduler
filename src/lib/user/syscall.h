@@ -3,6 +3,7 @@
 
 #include <stdbool.h>
 #include <debug.h>
+#include <stdint.h>
 
 /* Process identifier. */
 typedef int pid_t;
@@ -49,7 +50,7 @@ int inumber (int fd);
 
 /* my code begins */
 
-void inform_io(int device_num);
+void inform_io(int device_num, tid_t tid);
 void do_io(int device_num, int64_t use_time, tid_t tid);
 
 /* my code ends */
