@@ -22,6 +22,9 @@
 #include "threads/palloc.h"
 #include "threads/pte.h"
 #include "threads/thread.h"
+
+/* My code begins*/
+#include "devices/my_device.h"
 #ifdef USERPROG
 #include "userprog/process.h"
 #include "userprog/exception.h"
@@ -131,6 +134,15 @@ main (void)
   
   /* Run actions specified on kernel command line. */
   run_actions (argv);
+
+  /* My code begins */
+  
+  my_device_init(0);
+  my_device_init(1);
+  my_device_init(2);
+
+  /* My code ends */
+
 
   /* Finish up. */
   shutdown ();
